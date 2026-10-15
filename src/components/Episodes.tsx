@@ -6,9 +6,10 @@ interface EpisodesProps {
   season: Season
   episodes: Episode[]
   onBack: () => void
+  onEpisodeClick: (episode: Episode) => void
 }
 
-function Episodes({ season, episodes, onBack }: EpisodesProps) {
+function Episodes({ season, episodes, onBack, onEpisodeClick }: EpisodesProps) {
   return (
     <div>
       <button className="back-button" onClick={onBack}>
@@ -20,7 +21,11 @@ function Episodes({ season, episodes, onBack }: EpisodesProps) {
 
       <div className="episodes-grid">
         {episodes.map((episode) => (
-          <div className="episode-card" key={episode.id}>
+          <div
+            className="episode-card"
+            key={episode.id}
+            onClick={() => onEpisodeClick(episode)}
+            >
             {episode.image && (
               <img src={episode.image.medium} alt={episode.name} />
             )}

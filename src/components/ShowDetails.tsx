@@ -9,6 +9,7 @@ import {
 import './ShowDetails.css'
 import Episodes from './Episodes'
 import { useEffect, useState } from 'react'
+import VideoPlayer from './VideoPlayer'
 
 interface ShowDetailsProps {
   show: Show
@@ -24,6 +25,8 @@ function ShowDetails({ show, onBack }: ShowDetailsProps) {
 
     const [episodes, setEpisodes] = useState<Episode[]>([])
     const [showEpisodesPage, setShowEpisodesPage] = useState(false)
+
+    const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null)
 
     const selectedSeason = seasons.find(
     (season) => season.id === selectedSeasonId
@@ -55,12 +58,22 @@ function ShowDetails({ show, onBack }: ShowDetailsProps) {
     return <p>Loading show details...</p>
     }
 
+    if (selectedEpisode) {
+    return (
+        <VideoPlayer
+        episode={selectedEpisode}
+        onBack={() => setSelectedEpisode(null)}
+        />
+    )
+    }
+
     if (showEpisodesPage && selectedSeason) {
-        return (
+    return (
         <Episodes
         season={selectedSeason}
         episodes={selectedEpisodes}
         onBack={() => setShowEpisodesPage(false)}
+        onEpisodeClick={(episode) => setSelectedEpisode(episode)}
         />
     )
     }

@@ -1,0 +1,38 @@
+.video-player-page {
+  text-align: left;
+  color: #fff;
+}
+
+.video-player-page h2 {
+  color: #fff;
+  margin: 24px 0 16px;
+}
+
+.video-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 24px;
+  background: #000;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-container video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.episode-summary {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #b0b0b0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.episode-summary p {
+  margin-bottom: 12px;
+}
